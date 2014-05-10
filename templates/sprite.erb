@@ -1,0 +1,47 @@
+<%=name %>.h
+------------------------------------------------------
+
+#include <cocos2d.h>
+USING_NS_CC;
+
+class <%= name %> : pubic Sprite {
+
+public:
+  static <%= name %> *create<%=name %>();
+  virtual bool init();
+  CREATE_FUNC(<%= name %>);
+
+private:
+  void init<%=name %>();
+
+}
+------------------------------------------------------
+
+<%=name %>.cpp
+------------------------------------------------------
+#include "<%= name %>.h"
+
+USING_NS_CC;
+
+<%=name %> *<%=name %>::create<%=name %>(){
+  <%=name %> *object = new <%= name %>();
+  if (object && object->init()){
+    object->autorelease();
+    object->init<%=name %>();
+    return object;
+  }
+
+  CC_SAFE_DELETE(object);
+  return NULL;
+}
+
+bool <%= name%>::init(){
+  if (!Sprite::init()){
+    return false;
+  }
+  return true;
+}
+
+void <%=name%>::init<%=name %>(){
+
+}

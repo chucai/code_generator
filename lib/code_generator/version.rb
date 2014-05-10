@@ -1,0 +1,3 @@
+module CodeGenerator
+  VERSION = "0.0.1"
+end
