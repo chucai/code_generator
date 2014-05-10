@@ -1,10 +1,14 @@
+Define:
+<%= print_separate_line %>
+
 virtual bool onTouchBegan(Touch *touch, Event *event);
 
+Implements:
 <%= print_separate_line %>
 
 auto touchListener = EventListenerTouchOneByOne::create();
 touchListener->onTouchBegan = CC_CALLBACK_2(<%= name %>::onTouchBegan, this);
-_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
 
 bool <%= name %>::onTouchBegan(Touch *touch, Event *event) {
   return true;
