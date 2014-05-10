@@ -12,13 +12,29 @@
 ## 技术方案 
 
 ### command
-使用`rake`来实现，具体命令应该是这样的
-
+* 生成Sprite代码
 ```ruby
 rake generator:sprite[name]
 ```
-
 `name`是Sprite的名字
+
+* 生成时间监听代码
+```ruby
+rake generator:event_listener[name]
+```
+
+* 生成container代码
+```ruby
+rake generator:container[class_name, name]
+```
+class_name: 类名，比如 HelloWorld
+name: 需要装载的对象，比如block
+
+* 生成随机代码
+```ruby
+rake generator:random(5)
+```
+生成0-4的随机数
 
 ### 输出颜色
 
@@ -26,6 +42,5 @@ rake generator:sprite[name]
 
 ## ToDo
 
-* 实现生成eventlistener代码
 * 支持物理引擎的Sprite
 * 生成系统命令: `code_generator -c Sprite -n TestSprite` 
