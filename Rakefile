@@ -17,6 +17,11 @@ module Helper
     File.join(ROOT_PATH, "templates", "#{name}.erb")
   end
 
+  def parse_input(input)
+    raise "The input is required!" if input.nil? || input.lstrip == ''
+    yield input if block_given?
+  end
+
   def simple_generate_code(name, template_name)
     raise "The file name is required!" if name.nil? || name.lstrip() == ''
     file_path = find_template_path_by_name(template_name)
@@ -37,5 +42,20 @@ namespace :generator do
   desc "Generate the codes of eventlistener"
   task :event_listener, [:name] do |t, args|
     simple_generate_code(args[:name], "event")
+  end
+
+  desc "Generate a random codes"
+  task :random, [:number] do |t, args|
+    simple_generate_code(args[:number], "rand")
+  end
+
+  desc "Generate a container to hold targets, eg: rake generator:container[HelloWorld, blocks]"
+  task :container, [:class_name, :name] do |t, args|
+    parse_input(args[:name]) do |name|
+      class_name = args[:class_name].capitalize
+      file_path  = find_template_path_by_name("container")
+      template   = ERB.new File.read(file_path)
+      puts template.result(binding).blue
+    end
   end
 end

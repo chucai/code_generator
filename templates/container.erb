@@ -1,0 +1,11 @@
+Define:
+<%= print_separate_line %>
+static Vector<<%= name.capitalize %>*> * items;
+
+Initialize:
+<%= print_separate_line %>
+Vector<<%= name.capitalize %>*> *<%= class_name.capitalize %>::items = new Vector<<%= name.capitalize %>*>();
+
+Using: 
+<%= print_separate_line %>
+items->pushBack(<%=name %>);
