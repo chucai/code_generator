@@ -8,4 +8,13 @@ Vector<<%= name.capitalize %>*> *<%= class_name.capitalize %>::items = new Vecto
 
 Using: 
 <%= print_separate_line %>
-items->pushBack(<%=name %>);
+items->pushBack(item);
+
+<%= name.capitalize %> *item;
+for (auto current = items->begin(); current != items->end(); current++) {
+  item = *current;
+  if (item->getBoundingBox().containsPoint(touch->getLocation())){
+  }
+}
+
+items->eraseObject(item);
