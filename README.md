@@ -13,7 +13,13 @@
 使用`rake`来实现，具体命令应该是这样的
 
 ```ruby
-rake generator:sprite[true,false]
+rake generator:sprite[name]
 ```
-第一参试 true 是否增加EventListener
-第二参数 false是否增加物理引擎 
+
+`name`是Sprite的名字
+
+## ToDo
+
+* 实现生成eventlistener代码
+* 支持物理引擎的Sprite
+* 生成系统命令: `code_generator -c Sprite -n TestSprite` 
