@@ -1,5 +1,6 @@
 require "bundler/gem_tasks"
 require 'erb'
+require 'colored'
 
 ROOT_PATH = File.expand_path("..", __FILE__)
 
@@ -11,6 +12,6 @@ namespace :generator do
 
     file_path = File.join(ROOT_PATH, "templates", "sprite.erb")
     template = ERB.new File.read(file_path) 
-    puts template.result(binding)
+    puts template.result(binding).blue
   end
 end

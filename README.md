@@ -10,6 +10,8 @@
 > 可以自动生成指定对象的代码，比如可以指定生成Sprite的代码，或者具有"物理性质"的Sprite的代码
 
 ## 技术方案 
+
+### command
 使用`rake`来实现，具体命令应该是这样的
 
 ```ruby
@@ -17,6 +19,10 @@ rake generator:sprite[name]
 ```
 
 `name`是Sprite的名字
+
+### 输出颜色
+
+使用的是 `gem 'colored'`. 没有按照语言输出不同的颜色。以后参考pry来实现。
 
 ## ToDo
 
