@@ -1,0 +1,12 @@
+Define:
+<%=print_separate_line  %>
+Label * label;
+
+Initializer
+<%=print_separate_line  %>
+label = Label::create();
+label->setFontSize(32);
+label->setPosition(visibleSize.width / 2 , visibleSize.height - 50);
+std::string countText = StringUtils::format("Count: %d", 50 - count);
+label->setString(countText);
+addChild(label);

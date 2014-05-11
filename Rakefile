@@ -1,38 +1,26 @@
 require "bundler/gem_tasks"
+require "code_generator"
 require 'erb'
 require 'colored'
+require 'pry'
 
 ROOT_PATH = File.expand_path("..", __FILE__)
 
-module Helper
-  def log(label, text)
-    puts "#{label}: #{text}"
-  end
-
-  def print_separate_line
-    "-" * 98
-  end
-
-  def find_template_path_by_name(name)
-    File.join(ROOT_PATH, "templates", "#{name}.erb")
-  end
-
-  def parse_input(input)
-    raise "The input is required!" if input.nil? || input.lstrip == ''
-    yield input if block_given?
-  end
-
-  def simple_generate_code(name, template_name)
-    raise "The file name is required!" if name.nil? || name.lstrip() == ''
-    file_path = find_template_path_by_name(template_name)
-    template  = ERB.new File.read(file_path)
-    puts template.result(binding).blue
+desc "Test all tasks"
+task :test do
+  {
+    "generator:sprite"         => 'TestSprite',
+    "generator:event_listener" => "listener",
+    "generator:random"         => '10',
+    "generator:container"      => ["HelloWorld","block"],
+    "generator:ui"             => 'label'
+  }.each do |name, args|
+    Rake::Task[name].invoke(*[args].flatten)
   end
 end
 
-
 namespace :generator do
-  include Helper
+  include CodeGenerator::Helper
 
   desc "The tool will genrater a cocos2d::Sprite."
   task :sprite, [:name] do |t, args|
@@ -55,6 +43,15 @@ namespace :generator do
       class_name = args[:class_name].capitalize
       file_path  = find_template_path_by_name("container")
       template   = ERB.new File.read(file_path)
+      puts template.result(binding).blue
+    end
+  end
+
+  desc "Genearte ui widgets"
+  task :ui, [:widget] do |t, args|
+    parse_input(args[:widget]) do |name|
+      file_path = find_template_path_by_name("label")
+      template  = ERB.new File.read(file_path)
       puts template.result(binding).blue
     end
   end

@@ -36,6 +36,11 @@ rake generator:random(5)
 ```
 生成0-4的随机数
 
+* 生成UI的代码
+```ruby
+rake generator:ui[label]
+```
+
 ### 输出颜色
 
 使用的是 `gem 'colored'`. 没有按照语言输出不同的颜色。以后参考pry来实现。
