@@ -4,7 +4,7 @@
 #include <cocos2d.h>
 USING_NS_CC;
 
-class <%= name %> : pubic Sprite {
+class <%= name %> : public Sprite {
 
 public:
   static <%= name %> *create<%=name %>();
@@ -14,7 +14,7 @@ public:
 private:
   void init<%=name %>();
 
-}
+};
 <%= print_separate_line %>
 
 <%=name %>.cpp
