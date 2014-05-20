@@ -1,0 +1,10 @@
+//write
+auto fu = FileUtils::getInstance();
+FILE *f = fopen(fu->fullPathFromRelativeFile("data.txt", fu->getWritablePath()).c_str(), "w");
+fprintf(f, "Hello, test");
+fclose(f);
+
+//read
+Data data = fu->getDataFromFile(fu->fullPathFromRelativeFile("data.txt", fu->getWritablePath()));
+log("%s", data.getBytes());
+

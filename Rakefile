@@ -60,4 +60,9 @@ namespace :generator do
   task :user_default do
     simple_generate_code("not need", "user_default") 
   end
+
+  desc "Generate File code"
+  task :file do
+    simple_generate_code("not need", "file")
+  end
 end
