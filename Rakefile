@@ -55,4 +55,9 @@ namespace :generator do
       puts template.result(binding).blue
     end
   end
+
+  desc "Generate UserDefault codes"
+  task :user_default do
+    simple_generate_code("not need", "user_default") 
+  end
 end
